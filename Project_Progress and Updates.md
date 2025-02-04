@@ -1,3 +1,9 @@
+# Project 1. 
+
+Course **Data Engineering with AWS**
+
+## local setup
+
 ```
 # Create virtual environment
 python3 -m venv .venv
@@ -15,3 +21,6 @@ EOL
 # Install requirements
 pip install -r requirements.txt
 ```
+
+## docker
+
