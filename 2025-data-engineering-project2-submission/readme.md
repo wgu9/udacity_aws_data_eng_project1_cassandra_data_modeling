@@ -30,7 +30,7 @@ Sparkify needs this data warehouse to:
 
 ### 3. Data Warehouse Schema (Star Schema)
 
-![The relations between tables](final/etl_image.png)
+![The relations between tables](etl_image.png)
 
 I believe the most challenging aspects of this data warehouse project are the three steps below.
 
