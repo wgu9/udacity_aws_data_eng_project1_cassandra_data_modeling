@@ -34,6 +34,7 @@ Sparkify needs this data warehouse to:
 
 I believe the most challenging aspects of this data warehouse project are the three steps below.
 
+![Schema Design](<schema design - dbdiagram io.png>)
 
 #### 3.1 Table Definition and Schema Design
 - Understanding what tables are needed
