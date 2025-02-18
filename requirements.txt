@@ -1,3 +1,7 @@
 pandas
 cassandra-driver
 numpy
+matplotlib
+seaborn
+
+boto3
