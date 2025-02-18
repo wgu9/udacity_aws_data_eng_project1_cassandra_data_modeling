@@ -2,7 +2,23 @@ import configparser
 import psycopg2
 from sql_queries import copy_table_queries, insert_table_queries
 
+# Please add docstrings to each function 
+
 def load_staging_tables(cur, conn):
+    """
+    Loads data into staging tables from S3 using the provided cursor and connection.
+    This function iterates over a list of SQL COPY queries to load data into staging tables.
+    It also validates the data load by counting the number of rows in each staging table.
+    Args:
+        cur (psycopg2.cursor): Cursor object to execute PostgreSQL commands.
+        conn (psycopg2.connection): Connection object to commit transactions.
+    Raises:
+        Exception: If there is an error during the execution of the queries, it prints the error message and rolls back the transaction.
+    Prints:
+        The first 100 characters of each query being executed for debugging purposes.
+        The number of rows loaded into each staging table after successful execution.
+    """
+    
     try:
         for query in copy_table_queries:
             print(f"Executing query: {query[:100]}...")  # Print first 100 chars for debugging
@@ -23,6 +39,16 @@ def load_staging_tables(cur, conn):
         conn.rollback()
 
 def insert_tables(cur, conn):
+    """
+    Inserts data into the tables and validates the insertion by counting the rows in each table.
+    Parameters:
+    cur (psycopg2.cursor): Cursor of the database connection.
+    conn (psycopg2.connection): Connection to the database.
+    The function iterates over the list of insert queries, executes each query, and commits the transaction.
+    After inserting the data, it validates the insertion by counting the rows in each analytics table and printing the count.
+    Raises:
+    Exception: If there is an error during the insertion process, it prints the error message and rolls back the transaction.
+    """
     try:
         for query in insert_table_queries:
             print(f"Executing query: {query[:100]}...")  # Print first 100 chars for debugging
@@ -49,6 +75,16 @@ def insert_tables(cur, conn):
         conn.rollback()
 
 def main():
+    """
+    Main function to execute the ETL process.
+    This function reads the configuration file, connects to the Redshift cluster,
+    and executes the ETL process by loading staging tables and inserting data into
+    the final tables. It handles database and non-database errors and ensures that
+    the database connection is closed after the process.
+    Raises:
+        psycopg2.Error: If there is a database error during the ETL process.
+        Exception: If there is a non-database error during the ETL process.
+    """
     # Read config file
     config = configparser.ConfigParser()
     config.read('dwh.cfg')

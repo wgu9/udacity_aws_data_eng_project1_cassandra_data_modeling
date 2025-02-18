@@ -7,6 +7,23 @@ import configparser
 import psycopg2
 
 def count_table_rows(cur):
+    """
+    Count rows in all tables and print results.
+    This function executes a series of SQL queries to count the number of rows 
+    in each table of a database. It prints the row counts for the following tables:
+    - staging_events
+    - staging_songs
+    - songplays
+    - users
+    - songs
+    - artists
+    - time
+    Args:
+        cur (cursor): A database cursor object used to execute SQL queries.
+    Raises:
+        Exception: If there is an error executing any of the SQL queries, 
+                   it prints an error message with the table name and the exception.
+    """
     """Count rows in all tables and print results"""
     table_queries = [
         "SELECT COUNT(*) FROM staging_events",

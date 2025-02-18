@@ -3,6 +3,16 @@ import configparser
 import psycopg2
 
 def run_example_queries(conn):
+    """
+    Executes example queries on the provided database connection and prints the results.
+    Args:
+        conn (psycopg2.extensions.connection): The database connection object.
+    Queries:
+        1. Most played songs: Retrieves the top 5 most played songs along with their play counts.
+        2. Peak usage hours: Retrieves the top 5 hours with the highest number of song plays.
+    Prints:
+        The results of the queries to the console.
+    """
     cur = conn.cursor()
     
     # Query 1: Most played songs
@@ -32,6 +42,14 @@ def run_example_queries(conn):
         print(row)
 
 def run_user_activity_analysis(conn):
+    """
+    Executes a query to analyze user activity by counting the number of users 
+    at each subscription level (free vs paid) and prints the results.
+    Parameters:
+    conn (psycopg2.extensions.connection): The connection object to the database.
+    Returns:
+    None
+    """
     cur = conn.cursor()
     
     # Query: User Activity Analysis

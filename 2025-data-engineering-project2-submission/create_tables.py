@@ -3,6 +3,17 @@ from psycopg2 import Error
 from sql_queries import create_table_queries, drop_table_queries, config
 
 def drop_tables(cur, conn):
+    """
+    Drops tables in the database using the provided cursor and connection.
+    Parameters:
+    cur (psycopg2.extensions.cursor): Cursor to execute database queries.
+    conn (psycopg2.extensions.connection): Connection to the database.
+    Raises:
+    Error: If there is an error executing any of the drop table queries.
+    Returns:
+    None
+    """
+
     for query in drop_table_queries:
         try:
             cur.execute(query)
@@ -14,6 +25,20 @@ def drop_tables(cur, conn):
     print("Tables dropped successfully")
 
 def create_tables(cur, conn):
+    """
+    Creates tables in the database using the provided cursor and connection.
+
+    Parameters:
+    cur (psycopg2.extensions.cursor): The cursor object to execute database queries.
+    conn (psycopg2.extensions.connection): The connection object to commit transactions.
+
+    Raises:
+    Error: If there is an error executing any of the queries, the error is printed, 
+           the transaction is rolled back, and the error is raised again.
+
+    Returns:
+    None
+    """
     for query in create_table_queries:
         try:
             cur.execute(query)
