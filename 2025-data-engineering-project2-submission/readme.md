@@ -87,20 +87,15 @@ The star schema design was chosen because:
 - Managing data transformations
 - Ensuring data quality in INSERT statements
 
-### Execution
+### 4. Execution
 
-### Technologies Used in the Project
+### 5. Technologies Used in the Project
 - **AWS S3**: Data storage
 - **AWS Redshift**: Cloud-based data warehouse
 - **Python**: ETL scripting
 - **SQL**: Data transformation and querying
 
-### Key Considerations
-- Bulk data loading using `COPY` for efficiency.
-- Role-based access control for security.
-- Optimized schema design for analytical performance.
-
-### Project Files
+### 6. Project Files
 - `create_table.py` - Defines and creates database tables
 - `etl.py` - Extracts, transforms, and loads data into Redshift
 - `sql_queries.py` - SQL statements for table creation and data loading
@@ -115,7 +110,7 @@ Run this command below.
 python create_tables.py && python etl.py && python count_rows.py
 ```
 
-### Results
+### 7. Results
 
 ```
 Row counts for all tables:
