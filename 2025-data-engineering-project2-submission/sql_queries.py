@@ -150,7 +150,7 @@ drop_table_queries = [staging_events_table_drop,
 
 ## log data (partitioned by year/month)
 staging_events_copy = """
-    COPY staging_events FROM 's3://udacity-dend/log-data'
+    COPY staging_events FROM 's3://udacity-dend/log_data'
     credentials 'aws_iam_role={}'
     json {}
     region 'us-west-2'
@@ -165,7 +165,7 @@ staging_events_copy = """
 # COPY staging_songs FROM 's3://udacity-dend/song-data'
 staging_songs_copy = """
     
-    COPY staging_songs FROM 's3://udacity-dend/song-data'
+    COPY staging_songs FROM 's3://udacity-dend/song_data'
     credentials 'aws_iam_role={}'
     json 'auto'
     region 'us-west-2'
