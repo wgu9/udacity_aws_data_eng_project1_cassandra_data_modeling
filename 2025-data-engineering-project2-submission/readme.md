@@ -114,15 +114,16 @@ python create_tables.py && python etl.py && python count_rows.py
 ### 7. Results
 
 ```
-Row counts for all tables:
-----------------------------------------
-staging_events: 8,056 rows
-staging_songs: 385,212 rows
-songplays: 6,961 rows
-users: 105 rows
-songs: 384,955 rows
-artists: 45,262 rows
-time: 8,023 rows
+Table Row Counts:
+--------------------------------------------------
+Staging Events       |      8,056 rows
+Staging Songs        |     14,896 rows
+Songplays (Fact)     |        333 rows
+Users (Dim)          |        105 rows
+Songs (Dim)          |     14,896 rows
+Artists (Dim)        |     10,025 rows
+Time (Dim)           |      8,023 rows
+--------------------------------------------------
 ```
 
 # Appendix. SQL Query Analysis & Optimization
@@ -188,7 +189,7 @@ These settings are optimal for staging tables because:
 ```sql
 -- For staging_events
 COPY staging_events 
-FROM 's3://udacity-dend/log-data'
+FROM 's3://udacity-dend/log_data'
 credentials 'aws_iam_role={}'
 json {} -  -- Uses external JSON path file
 region 'us-west-2'
@@ -198,7 +199,7 @@ statupdate off;  -- Keep off for staging
 
 -- For staging_songs
 COPY staging_songs 
-FROM 's3://udacity-dend/song-data'
+FROM 's3://udacity-dend/song_data'
 credentials 'aws_iam_role={}'
 json 'auto' -   -- Automatically detects JSON format
 region 'us-west-2'
