@@ -1,8 +1,4 @@
-### Data Sources
-1. **Customer data** from website (customer_landing)
-2. **Accelerometer data** from mobile app (accelerometer_landing)
-3. **Step Trainer data** from IoT devices (step_trainer_landing)
-
+# Project Submission - list of files
 
 ```bash
 aws s3 cp ./project_mywork/starter/customer/landing/customer-1691348231425.json s3://jeremy-udacity-spark/customer/landing/ --profile myaws2
@@ -10,61 +6,28 @@ aws s3 cp ./project_mywork/starter/accelerometer s3://jeremy-udacity-spark/accel
 aws s3 cp ./project_mywork/starter/step_trainer s3://jeremy-udacity-spark/step_trainer/ --recursive --profile myaws2
 ```
 
-### Required Tasks
-
-1. **Landing Zone Setup**:
-   - Create S3 directories for the three landing zones
-   - Create Glue tables for initial data exploration
-   - Submit SQL scripts: customer_landing.sql, accelerometer_landing.sql, step_trainer_landing.sql
-   - Provide screenshots of Athena queries showing the data
-
-2. **Customer Data Sanitization (Landing → Trusted)**:
-   - Create a Glue job to filter customer records
-   - Keep only customers who agreed to share data for research
-   - Create `customer_trusted` table
-   - Provide screenshot of Athena query showing the results
-
-3. **Accelerometer Data Sanitization (Landing → Trusted)**:
-   - Create a Glue job to filter accelerometer readings
-   - Keep only readings from customers who agreed to share data
-   - Create `accelerometer_trusted` table
-
-4. **Customer Data Curation (Trusted → Curated)**:
-   - Create a Glue job to further filter customer data
-   - Keep only customers who have accelerometer data and agreed to share
-   - Create `customers_curated` table
-
-5. **Step Trainer Data Processing (Landing → Trusted)**:
-   - Create a Glue job to process Step Trainer IoT data
-   - Link with customers who agreed to share data
-   - Create `step_trainer_trusted` table
-
-6. **Machine Learning Dataset Creation (Curated)**:
-   - Create a Glue job to aggregate step trainer and accelerometer data
-   - Match by timestamp for agreed customers
-   - Create `machine_learning_curated` table
 
 ## Expected Files
+Python Files:
 
-customer_landing_to_trusted.py
-accelerometer_landing_to_trusted.py
-customer_trusted_to_curated.py
-step_trainer_trusted.py (or step_trainer_landing_to_trusted.py)
-machine_learning_curated.py
-
+- [x] [customer_landing_to_trusted.py](./job2-AWS%20Glue%20Jobs/customer_landing_to_trusted.py)
+- [x] [accelerometer_landing_to_trusted.py](./job2-AWS%20Glue%20Jobs/accelerometer_landing_to_trusted.py)
+- [x] [customer_trusted_to_curated.py](./job3-AWS%20Glue%20Cust%20Curated%20482/customer_trusted_to_curated.py)
+- [x] [step_trainer_trusted.py](./job4-AWS%20Glue%20trainer%20and%20machine/step_trainer_trusted.py)
+- [x] [machine_learning_curated.py](./job4-AWS%20Glue%20trainer%20and%20machine/machine_learning_curated.py)
 
 Additional SQL Files:
 
-- [x] customer_landing.sql
-- [x] accelerometer_landing.sql
-- [x] step_trainer_landing.sql
+- [x] [customer_landing.sql](./job1-sql/customer_landing.sql)
+- [x] [accelerometer_landing.sql](./job1-sql/accelerometer_landing.sql)
+- [x] [step_trainer_landing.sql](./job1-sql/step_trainer_landing.sql)
 
 Additional Screenshots:
 
-- [x] customer_landing.png/jpeg
-- [x] accelerometer_landing.png/jpeg
-- [x] step_trainer_landing.png/jpeg
-- [x] customer_trusted.png/jpeg
+- [x] [customer_landing.png](./job1-sql/customer_landing.png)
+- [x] [accelerometer_landing.png](./job1-sql/accelerometer_landing.png)
+- [x] [step_trainer_landing.png](./job1-sql/step_trainer_landing.png)
+- [x] [customer_trusted.png](./job2-AWS%20Glue%20Jobs/customer_trusted.png)
 
 ## Expected Row Counts
 
